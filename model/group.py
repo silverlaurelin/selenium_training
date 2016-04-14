@@ -5,7 +5,7 @@ class Group:
         self.header = header
         self.footer = footer
 
-    # jast some comment
+    # just some commint
 
 
 
