@@ -27,7 +27,7 @@ class GroupHelper:
         if text is not None:
             wd.find_element_by_name(filed_name).click()
             wd.find_element_by_name(filed_name).clear()
-            wd.find_element_by_name(filed_name).send_keys(filed_name)
+            wd.find_element_by_name(filed_name).send_keys(text)
 
     def open_groups_page(self):
         # open groups page
