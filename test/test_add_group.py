@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 from model.group import Group
 
-def test_add_group(app):
+
+def test_add_group(app, json_groups):
+     group = json_groups
      old_groups = app.group.get_groups_list()
-     group = Group(name="some name", header="some header", footer="some footer")
      app.group.create(group)
      assert len(old_groups) + 1 == app.group.count()
      new_groups = app.group.get_groups_list()
@@ -14,7 +15,7 @@ def test_add_group(app):
 
 #def test_add_empty_group(app):
 #    old_groups = app.group.get_groups_list()
-#   group = Group(name="", header="", footer="")
+#   group =
 #   app.group.create(group)
 #   new_groups = app.group.get_groups_list()
 #   assert len(old_groups) + 1 == len(new_groups)
