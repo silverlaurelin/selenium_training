@@ -5,6 +5,7 @@ from fixture.application import Application
 import json
 import importlib
 import jsonpickle
+from fixture.db import DbFixture
 
 fixture = None
 target = None
@@ -56,3 +57,13 @@ def load_from_module(module):
 def load_from_json(file):
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "data/%s.json" % file)) as f:
         return jsonpickle.decode(f.read())
+
+@pytest.fixture(scope = "session")
+def db(request):
+    dbfixture = DbFixture(host = "127.0.0.1", name="test", user = "root", password = "m")
+    def fin():
+        dbfixture.destroy()
+    request.addfinalizer(fin)
+    return dbfixture
+
+
