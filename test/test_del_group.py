@@ -13,5 +13,8 @@ def test_delete_some_group(app, db):
     old_groups.remove(group)
     assert old_groups == new_groups
 
+    #if check_ui:
+    #  assert new_groups == app.group.get_group_list()
+
 
     

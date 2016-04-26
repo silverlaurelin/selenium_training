@@ -20,7 +20,7 @@ def app(request):
      #       target = json.load(config_file)
 
     if fixture is None:
-        fixture = Application(browser = "chrome")
+        fixture = Application(browser = "firefox")
 
     else:
         if not fixture.is_valid():
@@ -38,7 +38,8 @@ def stop(request):
     return fixture
 
 def pytest_addoptions(parser):
-    parser.addoption ("--target", action="store", default="target.json")
+    parser.addoption("--target", action="store", default="target.json")
+    parser.addoption("--check_ui", action="store_true")
 
 
 def pytest_generate_tests(metafunc):
@@ -60,10 +61,15 @@ def load_from_json(file):
 
 @pytest.fixture(scope = "session")
 def db(request):
-    dbfixture = DbFixture(host = "127.0.0.1", name="test", user = "root", password = "m")
+    dbfixture = DbFixture(host = "127.0.0.1", name="addressbook", user = "root", password = "m")
     def fin():
         dbfixture.destroy()
     request.addfinalizer(fin)
     return dbfixture
+
+#@pytest.fixture
+#def check_ui(request):
+#    return request.config.getoption("--check_ui")
+
 
 
