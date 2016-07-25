@@ -1,4 +1,4 @@
-import mysql.connector
+#import mysql.connector
 from model.group import Group
 from model.contact import Contact
 
