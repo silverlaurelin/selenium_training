@@ -37,9 +37,9 @@ def stop(request):
     request.addfinalizer(fin)
     return fixture
 
-def pytest_addoptions(parser):
-    parser.addoption("--target", action="store", default="target.json")
-    parser.addoption("--check_ui", action="store_true")
+#def pytest_addoptions(parser):
+#    parser.addoption("--target", action="store", default="target.json")
+#    parser.addoption("--check_ui", action="store_true")
 
 
 def pytest_generate_tests(metafunc):
